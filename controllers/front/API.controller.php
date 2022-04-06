@@ -9,8 +9,8 @@ class APIController {
        $this->apiManager = new APIManager(); 
     }
 
-    public function getAnimals(){
-        $animals = $this->apiManager->getDBAnimals();
+    public function getAnimals($idFamily,$idContinent){
+        $animals = $this->apiManager->getDBAnimals($idFamily,$idContinent);
         Model::sendJSON($this->formatDataLinesAnimals($animals));
     }
     
@@ -27,7 +27,7 @@ class APIController {
                     "id" => $line['animal_id'],
                     "name" => $line['animal_nom'],
                     "description" => $line['animal_description'],
-                    "image" => $line['animal_image'],
+                    "image" => URL."public/images/" .$line['animal_image'],
                     "famille" => [
                         "idFamily" => $line['famille_id'],
                         "wordingFamily" => $line['famille_libelle'],
