@@ -7,7 +7,9 @@ class APIManager extends Model{
         if($idFamily !== -1 || $idContinent !== -1) $whereClause .= "WHERE ";
         if($idFamily !== -1) $whereClause .= "f.famille_id = :idFamily";
         if($idFamily !== -1 && $idContinent !== -1) $whereClause .=" AND ";
-        if($idContinent !== -1) $whereClause .= "c.continent_id = :idContinent";
+        if($idContinent !== -1) $whereClause .= "a.animal_id IN (
+            select animal_id from animal_continent where continent_id = :idContinent
+        )";
         
         $req = "SELECT * 
         from animal a inner join famille f on f.famille_id = a.famille_id
