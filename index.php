@@ -6,7 +6,9 @@ define("URL", str_replace("index.php", "",(isset($_SERVER['HTTPS']) ? "https" : 
 "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
 
 require_once "controllers/front/API.controller.php";
+require_once "controllers/back/admin.controller.php";
 $apiController = new APIController();
+$adminController = new AdminController();
 
 try{
     if(empty($_GET['page'])){
@@ -32,10 +34,17 @@ try{
                     break;
                     case "families" : $apiController -> getFamilies();
                     break;
+                    case "sendMessage" : $apiController -> sendMessage();
+                    break;
                     default : throw new Exception ("la page demandée n'éxiste pas");
                 }
             break;
-            case "back" : echo "page back end demandée";
+            case "back" :
+                switch($url[1]){
+                case "login" :$adminController->getPageLogin();
+                break;
+                default : throw new Exception("La page n'éxiste pas");
+            } 
             break;
             default : throw new Exception ("La page n'existe pas, erreur url");
         }

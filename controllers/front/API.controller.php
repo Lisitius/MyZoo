@@ -52,4 +52,26 @@ class APIController {
         $families = $this->apiManager->getDBFamilies();
         Model::sendJSON($families);
     }
+
+    public function sendMessage(){
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Method: POST, GET, OPTIONS, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Accept, Content-type, Content-Lenght, Accept-Encoding");
+        header ("Content-Type: application/json");
+
+        $obj = json_decode(file_get_contents('php://input'));
+
+        // $to = "loisirbenj@gmail.com";
+        // $subject ="Message du site MyZoo de :".$obj->nom;
+        // $message = $obj->content;
+        // $headers = "From :".$obj->email;
+        // mail($to, $subject, $message, $headers);
+
+        $messageRetour = [
+            'from' => $obj->email,
+            'to' => "loisirbenj@gmail.com"
+        ];
+
+        echo json_encode($messageRetour);
+    }
 }
