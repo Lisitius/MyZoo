@@ -9,4 +9,7 @@ class AdminController{
     public function getPageLogin(){
         require_once "views/login.view.php";
     }
+    public function connection(){
+        
+    }
 }

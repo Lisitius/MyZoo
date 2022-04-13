@@ -43,6 +43,8 @@ try{
                 switch($url[1]){
                 case "login" :$adminController->getPageLogin();
                 break;
+                case "connection" : $adminController->connection();
+                break;
                 default : throw new Exception("La page n'éxiste pas");
             } 
             break;
