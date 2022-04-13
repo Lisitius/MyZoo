@@ -1,7 +1,6 @@
 <?php
+session_start();
 
-//http://localhost/...
-//https://www.site.com/...
 define("URL", str_replace("index.php", "",(isset($_SERVER['HTTPS']) ? "https" : "http").
 "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
 
@@ -44,6 +43,8 @@ try{
                 case "login" :$adminController->getPageLogin();
                 break;
                 case "connection" : $adminController->connection();
+                break;
+                case "admin" : $adminController->getHomepageAdmin();
                 break;
                 default : throw new Exception("La page n'éxiste pas");
             } 
