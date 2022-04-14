@@ -46,6 +46,8 @@ try{
                 break;
                 case "admin" : $adminController->getHomepageAdmin();
                 break;
+                case "logout" : $adminController->logout();
+                break;
                 default : throw new Exception("La page n'éxiste pas");
             } 
             break;

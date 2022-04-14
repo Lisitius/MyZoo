@@ -27,6 +27,14 @@ class AdminController{
         }
     }
     public function getHomepageAdmin(){
-        require "views/homepageAdmin.view.php";
+        if(Security::verifAccessSession()){
+            require "views/homepageAdmin.view.php";
+        } else {
+            header('Location: '.URL."back/login");
+        }
+    }
+    public function logout(){
+        session_destroy();
+        header('Location: '.URL."back/login");
     }
 }
