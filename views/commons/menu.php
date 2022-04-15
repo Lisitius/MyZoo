@@ -16,13 +16,11 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Animaux
+                    Familles
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="<?= URL ?>back/families/visualization">Visualisation</a>
+                        <a class="dropdown-item" href="<?= URL ?>back/families/creation">Création</a>
                     </div>
                 </li>
                 <li>
