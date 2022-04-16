@@ -19,4 +19,16 @@ class FamiliesManager extends Model {
         $stmt->execute();
         $stmt->closeCursor();
     }
+
+    public function countAnimal($idFamily){
+        $req ="Select count(*) as 'nb'
+        from famille f inner join animal a on a.famille_id = f.famille_id
+        where f.famille_id = :idFamily";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue("idFamily",$idFamily,PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $result['nb'];
+    }
 }
